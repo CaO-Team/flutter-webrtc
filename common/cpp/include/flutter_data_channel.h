@@ -17,6 +17,8 @@ class FlutterRTCDataChannelObserver : public RTCDataChannelObserver {
 
   virtual void OnMessage(const char* buffer, int length, bool binary) override;
 
+  virtual void OnBufferedAmountChange(uint64_t bufferedAmount) override;
+
   scoped_refptr<RTCDataChannel> data_channel() { return data_channel_; }
 
  private:

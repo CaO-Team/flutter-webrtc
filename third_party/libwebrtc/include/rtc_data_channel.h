@@ -54,6 +54,8 @@ class RTCDataChannelObserver {
    */
   virtual void OnMessage(const char* buffer, int length, bool binary) = 0;
 
+  virtual void OnBufferedAmountChange(uint64_t bufferedAmount) = 0;
+
  protected:
   /**
    * The destructor for the RTCDataChannelObserver class.

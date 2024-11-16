@@ -147,4 +147,18 @@ void FlutterRTCDataChannelObserver::OnMessage(const char* buffer,
   auto data = EncodableValue(params);
   event_channel_->Success(data);
 }
+
+void FlutterRTCDataChannelObserver::OnBufferedAmountChange(uint64_t bufferedAmount) {
+//  std::string message = "This is a message. Buffered Amount: " + std::to_string(bufferedAmount);
+//  std::cout << message << std::endl;
+
+  EncodableMap params;
+  params[EncodableValue("event")] = EncodableValue("dataChannelBufferedAmountChange");
+  params[EncodableValue("id")] = EncodableValue(data_channel_->id());
+  params[EncodableValue("bufferedAmount")] = EncodableValue(static_cast<int64_t>(bufferedAmount));
+  params[EncodableValue("changedAmount")] = EncodableValue(static_cast<int64_t>(0));
+  auto data = EncodableValue(params);
+  event_channel_->Success(data);
+}
+
 }  // namespace flutter_webrtc_plugin
